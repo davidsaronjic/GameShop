@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Add Games";
+}
+
+@model GameShop.ViewModels.AddGameViewModel
+
+<div class="text-center text-white">
+    <h2 aria-level="1">Add Games</h2>
+    <p>Register a new game</p>
+</div>
+
+<div class="account-container">
+    <div class="account-box">
+        <form asp-action="AddGame" method="post" class="text-white">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="mb-4">
+                <label class="form-label" for="gameName">Game Name</label>
+                <input class="form-control" type="text" id="gameName" asp-for="GameName" />
+                <span asp-validation-for="GameName" class="text-danger"></span>
+            </div>
+            <div class="mb-4">
+                <label class="form-label" for="gameDate">Release Date</label>
+                <input class="form-control" type="date" id="gameDate" asp-for="ReleaseDate" />
+                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+            </div>
+            <div class="mb-4">
+                <label class="form-label" for="gamePrice">Price $</label>
+                <input class="form-control" type="number" step="0.01" id="gamePrice" asp-for="GamePrice" />
+                <span asp-validation-for="GamePrice" class="text-danger"></span>
+            </div>
+            <div class="mb-4">
+                <button class="btn btn-lg btn-dark" type="submit">Submit</button>
+            </div>  
+        </form>
+    </div>
+</div>

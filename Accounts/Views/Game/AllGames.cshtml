@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "All Games";
+}
+
+@model List<Game>
+
+<div class="text-center text-white">
+    <h2 aria-level="1">All Games</h2>    
+</div>
+
+<div class="account-container">
+    <div class="all-box">
+        <table class="table text-white">
+            <thead>
+                <tr>
+                    <th>Game Name</th>
+                    <th>Release Date</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var game in Model)
+                {
+                    var date = game.ReleaseDate.ToString().Remove(11);
+                    <tr>
+                        <td>@game.GameName</td>
+                        <td>@date</td>
+                        <td>@game.GamePrice $</td>
+                        <td>
+                            <a asp-controller="Game" asp-action="EditGame" asp-route-id="@game.Id"
+                               class="btn btn-sm btn-outline-light">Edit</a>
+
+                            <a asp-controller="Game" asp-action="DeleteGame" asp-route-id="@game.Id" class="btn btn-sm btn-outline-danger"
+                               onclick="return confirm('Are you sure you want to delete : @game.GameName')">X</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
